@@ -2867,25 +2867,25 @@ EOF
 
 sed -i '/^fs.file-max.*/'d /etc/sysctl.conf
 sed -i '/^fs.nr_open.*/'d /etc/sysctl.conf
-echo "fs.file-max = 666666" >> /etc/sysctl.conf
-echo "fs.nr_open = 666666" >> /etc/sysctl.conf
+echo "fs.file-max = 2000000" >> /etc/sysctl.conf
+echo "fs.nr_open = 2000000" >> /etc/sysctl.conf
 
 sed -i '/.*nofile.*/'d /etc/security/limits.conf
 sed -i '/.*nproc.*/'d /etc/security/limits.conf
 
 cat>>/etc/security/limits.conf<<EOF
-* - nofile 666666
-* - nproc 666666
-$ANUSER soft nofile 666666
-$ANUSER hard nofile 666666
-root soft nofile 666666
-root hard nofile 666666
+* - nofile 2000000
+* - nproc 2000000
+$ANUSER soft nofile 2000000
+$ANUSER hard nofile 2000000
+root soft nofile 2000000
+root hard nofile 2000000
 EOF
 
 sed -i '/^DefaultLimitNOFILE.*/'d /etc/systemd/system.conf
 sed -i '/^DefaultLimitNPROC.*/'d /etc/systemd/system.conf
-echo "DefaultLimitNOFILE=666666" >> /etc/systemd/system.conf
-echo "DefaultLimitNPROC=666666" >> /etc/systemd/system.conf
+echo "DefaultLimitNOFILE=2000000" >> /etc/systemd/system.conf
+echo "DefaultLimitNPROC=2000000" >> /etc/systemd/system.conf
 
 # 将最大的分区的保留空间设置为 0%
 echo `df -k | sort -rn -k4 | awk '{print $1}' | head -1`
