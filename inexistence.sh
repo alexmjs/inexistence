@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# https://github.com/Aniverse/inexistence
-# Author: Aniverse
+# https://github.com/alexmjs/inexistence
+# Author: alexmjs
 #
 # PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 # export PATH
