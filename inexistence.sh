@@ -2890,6 +2890,18 @@ locale
 sysctl -p
 # source /etc/bash.bashrc
 
+# 启用 mq
+sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash scsi_mod.use_blk_mq=y dm_mod.use_blk_mq=y"/g' /etc/default/grub
+
+# 启用 mq-deadline
+cat >/etc/udev/rules.d/60-schedulers.rules<<EOF
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"
+EOF
+
+# CPU 高性能模式
+sed -i '$i\echo performance \| tee \/sys\/devices\/system\/cpu\/cpu*\/cpufreq\/scaling_governor \> \/dev\/null'  /etc/rc.local
+
+
 # apt-get -y upgrade
 apt-get -y autoremove
 
