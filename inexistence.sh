@@ -1,11 +1,5 @@
 #!/bin/bash
-#
-# https://github.com/alexmjs/inexistence
-# Author: alexmjs
-#
-# PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-# export PATH
-# --------------------------------------------------------------------------------
+
 SYSTEMCHECK=1
 DISABLE=0
 DeBUG=0
